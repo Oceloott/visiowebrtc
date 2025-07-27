@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WebRTC Video Call</title>
+    <script type="module" src="./index.js" defer></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+      .user-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0;
+      }
+      .user-item {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .user-item:hover {
+        background-color: #e0e0e0;
+      }
+      .call-controls {
+        display: none;
+        margin: 20px 0;
+        padding: 15px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+      }
+      .video-container {
+        display: none;
+        margin: 20px 0;
+        text-align: center;
+      }
+      video {
+        width: 320px;
+        height: 225px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin: 10px;
+      }
+      button {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+      .accept-btn {
+        background-color: #28a745;
+        color: white;
+      }
+      .reject-btn {
+        background-color: #dc3545;
+        color: white;
+      }
+      .end-btn {
+        background-color: #6c757d;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="login">
+      <input name="username" placeholder="Type an username" />
+      <input type="submit" value="Connect" />
+    </form>
+    
+    <div id="chat" style="display: none">
+      <div>Connected as "<span id="username"></span>"</div>
+      
+      <div class="user-list">
+        <h3>Users Online:</h3>
+        <div id="users"></div>
+      </div>
+      
+      <div class="call-controls" id="call-controls">
+        <h3>Incoming Call</h3>
+        <p>Call from: <span id="caller-name"></span></p>
+        <button id="accept-call" class="accept-btn">Accept</button>
+        <button id="reject-call" class="reject-btn">Reject</button>
+      </div>
+      
+      <div class="video-container" id="video-container">
+        <h3>Video Call</h3>
+        <video id="local-video" autoplay muted></video>
+        <video id="remote-video" autoplay></video>
+        <br>
+        <button id="end-call" class="end-btn">End Call</button>
+      </div>
+    </div>
+  </body>
+</html>
